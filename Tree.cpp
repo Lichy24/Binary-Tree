@@ -228,12 +228,13 @@ int ariel::Tree::right(int i,node* n){
     }
     if(n->getLeft != NULL){
         if(n->data > i)
-            return right(i,n->getLeft);
+            return +right(i,n->getLeft);
     }
     if(n->getRight != NULL){
         if(n->data < i)
-            return right(i,n->getRight);
+            return +right(i,n->getRight);
     }
+    return 0;
 }
 //LEFT
 int ariel::Tree::left(int i){
@@ -250,12 +251,13 @@ int ariel::Tree::left(int i,node* n){
     }
     if(n->getLeft != NULL){
         if(n->data > i)
-            return left(i,n->getLeft);
+            return +left(i,n->getLeft);
     }
     if(n->getRight != NULL){
         if(n->data < i)
-            return left(i,n->getRight);
+            return +left(i,n->getRight);
     }
+    return 0;
 }
 //PARENT
 int ariel::Tree::parent(int i){
@@ -269,14 +271,15 @@ int ariel::Tree::parent(int i,node* n){
         if (n->getLeft->data == i)
             return n->data;
         if(n->data > i)
-            return parent(i,n->getLeft);
+            return +parent(i,n->getLeft);
     }
     if(n->getRight != NULL){
         if (n->getRight->data == i)
             return n->data;
         if(n->data < i)
-            return parent(i,n->getRight);
+            return +parent(i,n->getRight);
     }
+    return 0;
 }
 //PRINT
 void ariel::Tree::print(){
