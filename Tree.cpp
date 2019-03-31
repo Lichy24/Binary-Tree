@@ -37,8 +37,8 @@
     
 //REMOVE
 void ariel::Tree::remove(int i){
-    remove(i,head);
-    total--;
+		remove(i, head);
+		total--;
 }
 void ariel::Tree::remove(int i,node* n){
     if(head != NULL){
@@ -66,7 +66,7 @@ void ariel::Tree::remove(int i,node* n){
         }
         }
     }else{
-        cout <<"The tree is empty\n";
+        throw "The tree is empty\n";
     }
 }
 void ariel::Tree::removeRoot(){
@@ -150,8 +150,8 @@ void ariel::Tree::removeMatch(node* n,node* match,bool left){
 }
 //INSERT
 void ariel::Tree::insert(int i){
-    insert(i,head);
-    total++;
+		insert(i, head);
+		total++;
 }
 void ariel::Tree::insert(int i, node* n){
     if(head == NULL){
@@ -215,6 +215,8 @@ bool ariel::Tree::contains(int i,node* n){
 }
 //RIGHT
 int ariel::Tree::right(int i){
+	if (!contains(i))
+		throw "does not exist";
     return right(i,head);
 }
 int ariel::Tree::right(int i,node* n){
@@ -238,6 +240,8 @@ int ariel::Tree::right(int i,node* n){
 }
 //LEFT
 int ariel::Tree::left(int i){
+	if (!contains(i))
+		throw "does not exist";
     return left(i,head);
 }
 int ariel::Tree::left(int i,node* n){
@@ -261,6 +265,8 @@ int ariel::Tree::left(int i,node* n){
 }
 //PARENT
 int ariel::Tree::parent(int i){
+	if (!contains(i))
+		throw "does not exist";
     return parent(i,head);
 }
 int ariel::Tree::parent(int i,node* n){
