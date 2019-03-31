@@ -22,7 +22,7 @@
             if(n->getRight != NULL){
                 removeSubtree(n->getRight);
             }
-            cout << "Deleteing the node containing key " << n->data << endl;
+            cout << "Deleteing the node containing data " << n->data << endl;
             delete n;
         }
     }
@@ -32,6 +32,7 @@
         n->data = i;
         n->getLeft = NULL;
         n->getRight = NULL;
+		cout << "Added to binary cotaining data " << n->data << endl;
         return n;
     }
     
@@ -293,16 +294,9 @@ void ariel::Tree::print(){
     cout << endl;
 }
 void ariel::Tree::printInOrder(node* n){
-    if(head != NULL){
-        if (n->getLeft != NULL){
-            printInOrder(n->getLeft);
-        }
-        cout << n->data << " ";
-        if (n->getRight != NULL){
-            printInOrder(n->getRight);
-        }
-    }
-    else{
-        cout << "The tree is empty";
-    }
+	if (n == NULL)
+		return;
+    printInOrder(n->getLeft);
+    cout << n->data << " ";
+    printInOrder(n->getRight);
 }
