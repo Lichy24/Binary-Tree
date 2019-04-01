@@ -20,6 +20,8 @@ class Tree{
     bool contains(int i);
     int root(){
         std::cout << "return head" << std::endl;
+        if(head == NULL)
+            throw "HEAD is NULL";
         return head->data;
     }
     int parent(int i);
