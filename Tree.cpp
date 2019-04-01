@@ -1,5 +1,6 @@
 /*  got helped from: https://www.youtube.com/channel/UCcDGsN3JxMavDkM9INRLGFA
     explaning insertion,removal,deconstruction...etc of binary tree in C++.
+	very short deletion funcation https://www.geeksforgeeks.org/binary-search-tree-set-2-delete/
 */
 #include <iostream>
 #include "Tree.hpp"
@@ -38,9 +39,10 @@
     
 //REMOVE
 void ariel::Tree::remove(int i){
-	cout << "delete used for " << i << endl;
 	if (!contains(i))
 		throw "not found";
+	if (head == NULL)
+		throw "cannot remove from empty Tree";
 	head = remove(i, head);
 		total--;
 }
@@ -102,119 +104,8 @@ node* ariel::Tree::remove(int i, node* n)
 		return n;
 	}
 }
-/*
-void ariel::Tree::remove(int i,node* n){
-    if(head != NULL){
-        if(head->data == i){
-            removeRoot();
-        }
-        else{
-            if(i < n->data && n->getLeft != NULL){
-                if(n->getLeft->data == i){
-                    removeMatch(n,n->getLeft,true);
-                    
-                }else{
-                    remove(i,n->getLeft);
-                }
-            }
-        else if(i > n->data && n->getRight != NULL){
-                if(n->getRight->data == i){
-                    removeMatch(n,n->getRight,false);
-                }else{
-                    remove(i,n->getRight);
-                }
-            }
-        else{
-            throw "The data was not found in the tree\n";
-        }
-        }
-    }else{
-        throw "The tree is empty\n";
-    }
-}
-void ariel::Tree::removeRoot(){
-    if (head != NULL){
-        node* delPtr = head;
-        int rootdata = head->data;
-        int smallestInRightSubTree;
-        if(head->getLeft == NULL && head->getRight == NULL){
-            head = NULL;
-            delete delPtr;
-        }
-        else if(head->getLeft == NULL && head->getRight != NULL){
-            head = head->getRight;
-            delPtr->getRight = NULL;
-            delete delPtr;
-            cout << "The root node with data "<< rootdata << " was deleted. " << "The new root contains data "<< head->data << endl;
-        }
-        else if(head->getLeft != NULL && head->getRight == NULL){
-            head = head->getLeft;
-            delPtr->getLeft = NULL;
-            delete delPtr;
-            cout << "The root node with data "<< rootdata << " was deleted. " << "The new root contains data "<< head->data << endl;
-        }
-    else
-    {
-        smallestInRightSubTree = findSmallest(head->getRight);
-        remove(smallestInRightSubTree, head);
-        head->data = smallestInRightSubTree;
-        cout << "The root data containing " << rootdata << " was overwritten with data " << head->data << endl;
-    }
-    }
-    else{
-        throw "Can remove root the tree is empty\n";
-    }
-}
-void ariel::Tree::removeMatch(node* n,node* match,bool left){
-    if(head != NULL){
-        node* delPtr;
-        int matchData = match->data;
-        int smallestInRightSubTree;
-        
-        if(match->getLeft == NULL && match->getRight == NULL){
-            delPtr = match;
-            if(left == true){
-                n->getLeft = NULL;
-            }
-            else{
-                n->getRight = NULL;
-            }
-            delete delPtr;
-            cout << "The node containing data " << matchData << " was removed\n";
-        }
-        else if(match->getLeft == NULL && match->getRight != NULL){
-            if (left == true){
-                n->getLeft = match->getRight;
-            }else{
-                n->getRight = match->getRight;
-            }
-            match->getRight = NULL;
-            delPtr = match;
-            delete delPtr;
-            cout << "The node containing data " << matchData << " was removed\n";
-        }
-        else if(match->getLeft != NULL && match->getRight == NULL){
-            if (left == true){
-                n->getLeft = match->getLeft;
-            }else{
-                n->getRight = match->getLeft;
-            }
-            match->getLeft = NULL;
-            delPtr = match;
-            delete delPtr;
-            cout << "The node containing data " << matchData << " was removed\n";
-        }
-        else{
-            smallestInRightSubTree = findSmallest(match->getRight);
-            remove(smallestInRightSubTree,match);
-            match->data = smallestInRightSubTree;
-        }
-    }
-}
-*/
 //INSERT
 void ariel::Tree::insert(int i){
-	cout << "used insert for " << i << endl;
 		insert(i, head);
 		total++;
 }
@@ -240,21 +131,7 @@ void ariel::Tree::insert(int i, node* n){
     }
     else
     {
-        throw "The key has already been added to the tree\n";
-    }
-}
-//FIND
-int ariel::Tree::findSmallest(){
-    return findSmallest(head);
-}
-int ariel::Tree::findSmallest(node* n){
-    if(head == NULL){
-        throw "Failed to find smallest number";//ERROR
-    }
-    if(n->getLeft != NULL){
-        return findSmallest(n->getLeft);
-    }else{
-        return n->data;
+        throw "The data has already been added to the tree\n";
     }
 }
 //CONTAINS
@@ -280,7 +157,6 @@ bool ariel::Tree::contains(int i,node* n){
 }
 //RIGHT
 int ariel::Tree::right(int i){
-	cout << "used right for " << i << endl;
 	if (!contains(i))
 		throw "does not exist";
     return right(i,head);
@@ -306,7 +182,6 @@ int ariel::Tree::right(int i,node* n){
 }
 //LEFT
 int ariel::Tree::left(int i){
-	cout << "used left for " << i << endl;
 	if (!contains(i))
 		throw "does not exist";
     return left(i,head);
@@ -332,7 +207,6 @@ int ariel::Tree::left(int i,node* n){
 }
 //PARENT
 int ariel::Tree::parent(int i){
-	cout << "used parent for " << i << endl;
 	if (!contains(i))
 		throw "does not exist";
     return parent(i,head);
@@ -357,7 +231,6 @@ int ariel::Tree::parent(int i,node* n){
 }
 //PRINT
 void ariel::Tree::print(){
-    cout << "printing tree..." << endl;
     printInOrder(head);
     cout << endl;
 }

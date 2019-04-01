@@ -19,9 +19,9 @@ class Tree{
     }
     bool contains(int i);
     int root(){
-        std::cout << "return head" << std::endl;
-        if(head == NULL)
-            throw "HEAD is NULL";
+		std::cout << "return head" << std::endl;
+		if (head == NULL)
+			throw "HEAD IS NULL";
         return head->data;
     }
     int parent(int i);
@@ -39,10 +39,6 @@ class Tree{
     int left(int i,node* n);
     int right(int i,node* n);
     bool contains(int i,node* n);
-    void removeRoot();
-    void removeMatch(node* n,node* match,bool left);
-    int findSmallest();
-    int findSmallest(node* n);
     void removeSubtree(node* n);
     
 };
