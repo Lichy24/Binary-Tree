@@ -214,6 +214,7 @@ void ariel::Tree::removeMatch(node* n,node* match,bool left){
 */
 //INSERT
 void ariel::Tree::insert(int i){
+	cout << "used insert for " << i << endl;
 		insert(i, head);
 		total++;
 }
@@ -353,6 +354,7 @@ int ariel::Tree::parent(int i,node* n){
 }
 //PRINT
 void ariel::Tree::print(){
+    cout << "printing tree..." << endl;
     printInOrder(head);
     cout << endl;
 }
