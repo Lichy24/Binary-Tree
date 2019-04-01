@@ -38,6 +38,7 @@
     
 //REMOVE
 void ariel::Tree::remove(int i){
+	cout << "delete used for " << i << endl;
 	if (!contains(i))
 		throw "not found";
 	head = remove(i, head);
