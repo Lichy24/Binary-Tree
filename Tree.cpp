@@ -42,7 +42,7 @@ void ariel::Tree::remove(int i) {
 	if (!contains(i))
 		throw "not found";
 	if (head == NULL)
-		throw "empty Tree"
+		throw "empty Tree";
 	head = remove(i, head);
 	total--;
 }
