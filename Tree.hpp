@@ -19,7 +19,7 @@ class Tree{
     }
     bool contains(int i);
     int root(){
-        cout << "called for head" << endl;
+        std::cout << "return head" << std::endl;
         return head->data;
     }
     int parent(int i);
