@@ -31,7 +31,7 @@ class Tree{
     node* head;
     void printInOrder(node* n);
     void insert(int i, node* n);
-    void remove(int i,node* n);
+    node* remove(int i,node* n);
     int parent(int i,node* n);
     int left(int i,node* n);
     int right(int i,node* n);

@@ -38,10 +38,70 @@
     
 //REMOVE
 void ariel::Tree::remove(int i){
-	cout << "remove used for " << i << endl;
-		remove(i, head);
+	if (!contains(i))
+		throw "not found";
+	head = remove(i, head);
 		total--;
 }
+node* ariel::Tree::remove(int i, node* n)
+{
+	// Base case 
+	if (n == NULL)
+		return n;
+
+	// Recursive calls for ancestors of 
+	// node to be deleted 
+	if (n->data > i) {
+		n->getLeft = remove(i, n->getLeft);
+		return n;
+	}
+	else if (n->data < i) {
+		n->getRight = remove(i,n->getRight);
+		return n;
+	}
+
+	// We reach here when root is the node 
+	// to be deleted. 
+
+	// If one of the children is empty 
+	if (n->getLeft == NULL) {
+		node* temp = n->getRight;
+		delete n;
+		return temp;
+	}
+	else if (n->getRight == NULL) {
+		node* temp = n->getLeft;
+		delete n;
+		return temp;
+	}
+
+	// If both children exist 
+	else {
+
+		node* succParent = n->getRight;
+
+		// Find successor 
+		node *succ = n->getRight;
+		while (succ->getLeft != NULL) {
+			succParent = succ;
+			succ = succ->getLeft;
+		}
+
+		// Delete successor.  Since successor 
+		// is always left child of its parent 
+		// we can safely make successor's right 
+		// right child as left of its parent. 
+		succParent->getLeft = succ->getRight;
+
+		// Copy Successor Data to root 
+		n->data = succ->data;
+
+		// Delete Successor and return root 
+		delete succ;
+		return n;
+	}
+}
+/*
 void ariel::Tree::remove(int i,node* n){
     if(head != NULL){
         if(head->data == i){
@@ -150,6 +210,7 @@ void ariel::Tree::removeMatch(node* n,node* match,bool left){
         }
     }
 }
+*/
 //INSERT
 void ariel::Tree::insert(int i){
 		insert(i, head);
