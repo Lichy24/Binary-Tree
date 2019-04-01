@@ -280,6 +280,7 @@ bool ariel::Tree::contains(int i,node* n){
 }
 //RIGHT
 int ariel::Tree::right(int i){
+	cout << "used right for " << i << endl;
 	if (!contains(i))
 		throw "does not exist";
     return right(i,head);
@@ -305,6 +306,7 @@ int ariel::Tree::right(int i,node* n){
 }
 //LEFT
 int ariel::Tree::left(int i){
+	cout << "used left for " << i << endl;
 	if (!contains(i))
 		throw "does not exist";
     return left(i,head);
@@ -330,6 +332,7 @@ int ariel::Tree::left(int i,node* n){
 }
 //PARENT
 int ariel::Tree::parent(int i){
+	cout << "used parent for " << i << endl;
 	if (!contains(i))
 		throw "does not exist";
     return parent(i,head);
