@@ -43,9 +43,10 @@ void ariel::Tree::remove(int i) {
 		throw "not found";
 	if (head == NULL)
 		throw "empty Tree";
-	head = remove(i, head);
+	remove(i, head);
 	total--;
 }
+/*
 node* ariel::Tree::remove(int i, node* n)
 {
 	// Base case 
@@ -104,7 +105,7 @@ node* ariel::Tree::remove(int i, node* n)
 		return n;
 	}
 }
-/*
+*/
 void ariel::Tree::remove(int i,node* n){
 	if(head != NULL){
 		if(head->data == i){
@@ -213,7 +214,6 @@ void ariel::Tree::removeMatch(node* n,node* match,bool left){
 		}
 	}
 }
-*/
 //INSERT
 void ariel::Tree::insert(int i) {
 	cout << "used insert for " << i << endl;
