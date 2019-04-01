@@ -38,6 +38,7 @@
     
 //REMOVE
 void ariel::Tree::remove(int i){
+	cout << "remove used for " << i << endl;
 		remove(i, head);
 		total--;
 }
