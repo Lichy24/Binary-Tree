@@ -39,6 +39,7 @@
     
 //REMOVE
 void ariel::Tree::remove(int i){
+	cout << "remove used for " << i << endl;
 	if (!contains(i))
 		throw "not found";
 	if (head == NULL)
@@ -106,6 +107,7 @@ node* ariel::Tree::remove(int i, node* n)
 }
 //INSERT
 void ariel::Tree::insert(int i){
+	cout << "used insert for " << i << endl;
 		insert(i, head);
 		total++;
 }
@@ -231,6 +233,7 @@ int ariel::Tree::parent(int i,node* n){
 }
 //PRINT
 void ariel::Tree::print(){
+	cout << "printing tree" << endl;
     printInOrder(head);
     cout << endl;
 }
