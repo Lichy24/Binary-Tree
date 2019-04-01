@@ -45,6 +45,7 @@ void ariel::Tree::remove(int i) {
 		throw "cannot remove from empty Tree";
 	head = remove(i, head);
 	total--;
+	cout << "done delete for " << i << endl;
 }
 node* ariel::Tree::remove(int i, node* n)
 {
